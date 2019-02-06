@@ -2,8 +2,6 @@
 
 ## Writeup
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -29,7 +27,7 @@ The goals / steps of this project are the following:
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Here I considered the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Writeup / README
@@ -53,73 +51,111 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. Its related code is given in `Include an exploratory visualization of the dataset` cell.
 
-![alt text][image1]
+**Visualization of randon images from dataset**
+
+Please find some random images from the training dataset, this will let us know about the content of training images data sets.
+
+Visualization of random images:
+[![Visualization of random images](random_visualization_img.jpg)](random_visualization_img.jpg)
+
+The above images shows us that training data set has not good images quality. Some of images are blurred and some of too dark. Some images are taken in low light conditions are some of are in high. These images could affect the leaning or training to the model and the results as well.
 
 ### Design and Test a Model Architecture
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### I. Preprocessing: conversion to grayscale
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to convert the all images to grayscale because there is nothing discrete information added by color in signs by which it helps to distinguish about sign. Secondly, many of pictures are taken in bad light conditions, some of too dark and some of too light, so using grayscaling, it shows better visuality in grayed images. Another reason is, training of the model processing is faster in grayscaled images.
 
-Here is an example of a traffic sign image before and after grayscaling.
+Showing the grayed images code is available in first cell of `Pre-process the Data Set (normalization, grayscale, etc.)`. Function name is `show_my_img()`.
 
-![alt text][image2]
+Converting all images to grayscaled code is available in second cell of `Pre-process the Data Set (normalization, grayscale, etc.)` through lines 12 to 24. Function name is `grayscale()`.
 
-As a last step, I normalized the image data because ...
+Here is an example of a traffic sign image before and after grayscaling. I am  showing random images from dataset, first color image and grayed image after it one by one.
 
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+Visualization of grayed images:
+[![Visualization of grayed images](gray_visualization_img.jpg)](gray_visualization_img.jpg)
 
 
-#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### II. Preprocessing: Image Normalization
+
+Images normalization is the next step of preprocessing. Using this images will have zero mean and equal variance. Normalization helps optimizer in converging faster and better results.
+
+Its code is available in second cell of `Pre-process the Data Set (normalization, grayscale, etc.)` through lines 26 to 29.
+`# Normalization
+normalized_X_train = (gray_X_train-128)/128
+normalized_X_valid = (gray_X_valid-128)/128
+normalized_X_test = (gray_X_test-128)/128`
+
+In the same cell a function is created to show the sample of the normalize image. Function `show_normalize()` and its calling code is available through lines 31 to 44.
+
+Here is an example of an original image and an normalized image:
+[![Visualization of normalized image](normalized_and_grayscaled.jpg)](normalized_and_grayscaled.jpg)
+
+
+#### III. Preprocessing: Image Shuffling
+
+Image shuffling is the last step of the preprocessing. Shuffle data is necessary to train model better.
+
+Its code is available in second cell of `Pre-process the Data Set (normalization, grayscale, etc.)` at line 47
+`# Shuffle
+shuffled_X_train, shuffled_y_train = shuffle(normalized_X_train, y_train)`
+
+#### 2. Final Model Architecture (model type, layers, layer sizes, connectivity, etc.)
+
+Code for final model architecture is available in section `Model Architecture` which has several code cells one by one.
 
 My final model consisted of the following layers:
 
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Layer         						|     Description	        						| 
+|:---------------------:				|:---------------------------------------------:	| 
+| Input         						| 32x32x3 RGB image   								| 
+| Layer 1(L_1): Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 		|
+| Layer 1(L_1): RELU					| Activation Layer									|
+| Layer 1(L_1): Max pooling	      		| 2x2 stride,  outputs 16x16x64 					|
+| Layer 2(L_2): Convolution 3x3			| 1x1 stride, same padding, outputs 16x16x128		|
+| Layer 2(L_2): RELU					| Activation Layer									|
+| Layer 2(L_2): Max pooling	      		| 2x2 stride,  outputs 8x8x128 						|
+| Layer 3(L_3): Convolution 3x3	    	| 1x1 stride, same padding, outputs 8x8x256			|
+| Layer 3(L_3): RELU					| Activation Layer									|
+| Layer 3(L_3): Max pooling	      		| 2x2 stride,  outputs 4x4x256 						|
+| Layer 4(L_4): Convolution 3x3	    	| 1x1 stride, same padding, outputs 4x4x512			|
+| Layer 4(L_4): RELU					| Activation Layer									|
+| Layer 4(L_4): Max pooling	      		| 2x2 stride,  outputs 2x2x512 						|
+| Flatten Layer (flatten(L_4)	      	| Flattening output of Layer 4, 2x2x512 -> 2048 	|
+| Flatten Layer (Dropout)	      		| Dropout layer 									|
+| Layer 5(L_5): Fully Connected	    	| Fully connected layer of size 1024, outputs 1024x1|
+| Layer 5(L_5): RELU	      			| Activation Layer 									|
+| Layer 5(L_5): Dropout	      			| Dropout layer 									|
+| Fully connected						| Fully connected layer of size 43, outputs 43x1	|
  
 
 
-#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Training model parameters(optimizer, the batch size, number of epochs) and hyperparameters(learning rate etc.)
 
-To train the model, I used an ....
+The below credentials are used to train the model.
+* optimizer: Adam Optimizer
+* the batch size: 128
+* number of epochs: 15
+* learning rate: 0.001
+* loss function: Cross entropy
+* probability: 0.5 (during training)
+* weights & biases: tf.truncated_normal (mean = 0, and standard deviation = 0.1)
 
-#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Approach taken for finding a solution
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 0.998
+* validation set accuracy of 0.961
+* test set accuracy of 0.948
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+Its related code is available in section `Train, Validate and Test the Model` which has 2 cells. In first cell, we are training the model and in second cell we are calculating and printing the accuracy.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+I chose well known CNN architecture vgg-16. The reason behind to choose this architecture is:
+* It achieved excellent results on the ILSVRC-2014 (ImageNet competition). As it performed nice in competition, I got idea to implement it into my current task for traffic sign classification so I can get better results.
+* Another reason is it's implementation is easy.
+* Final model's accuracy on the training, validation and test set was really well. It performed good to get accuracy more than 0.93
  
 
 ### Test a Model on New Images
