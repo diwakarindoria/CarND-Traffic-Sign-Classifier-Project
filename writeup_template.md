@@ -197,7 +197,7 @@ Here are the results of the prediction:
 | Keep left			| Keep left      							|
 
 
-The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. These two images are `Speed limit (70km/h)` and `Pedestrians`. As I am assuming that model is not enough trained for detecting these signs and need more examples to learn.
+The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. These two images are `Speed limit (70km/h)` and `Pedestrians`. To discriminate these 2 classes there should be more examples needed to train the model learn.
 
 Its code is available in section `Predict the Sign Type for Each Image`. 
 [![Prediction Performance](prediction_performance.jpg)](prediction_performance.jpg)
