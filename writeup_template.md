@@ -86,8 +86,11 @@ Its code is available in second cell of `Pre-process the Data Set (normalization
 
 
 `# Normalization
+
 normalized_X_train = (gray_X_train-128)/128
+
 normalized_X_valid = (gray_X_valid-128)/128
+
 normalized_X_test = (gray_X_test-128)/128`
 
 In the same cell a function is created to show the sample of the normalize image. Function `show_normalize()` and its calling code is available through lines 31 to 44.
@@ -104,6 +107,7 @@ Its code is available in second cell of `Pre-process the Data Set (normalization
 
 
 `# Shuffle
+
 shuffled_X_train, shuffled_y_train = shuffle(normalized_X_train, y_train)`
 
 #### 2. Final Model Architecture (model type, layers, layer sizes, connectivity, etc.)
