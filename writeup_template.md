@@ -154,9 +154,9 @@ The below credentials are used to train the model.
 #### 4. Approach taken for finding a solution
 
 My final model results were:
-* training set accuracy of 0.998
-* validation set accuracy of 0.961
-* test set accuracy of 0.948
+* training set accuracy of 0.999
+* validation set accuracy of 0.950
+* test set accuracy of 0.946
 
 Its related code is available in section `Train, Validate and Test the Model` which has 2 cells. In first cell, we are training the model and in second cell we are calculating and printing the accuracy.
 
@@ -180,7 +180,7 @@ Here are seven German traffic signs that I found on the web:
 [![Turn right ahead](new_images/g6.jpg)](new_images/g6.jpg)
 [![Keep left](new_images/g7.jpg)](new_images/g7.jpg)
 
-I applied the trained model over all images that found on web. Out of 7 images, 5 images predicted correct and 2 images predicted wrong but their probability differene betweeen right and wrong was less.
+I applied the trained model over all images that found on web. Out of 7 images, 5 images predicted correct and 2 images predicted wrong.
 
 #### 2. Model's predictions on these new traffic signs.
 
@@ -189,7 +189,7 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Priority road      		| Priority road   									| 
-| Speed limit (70km/h)     			| General caution										|
+| Speed limit (70km/h)     			| Speed limit (20km/h)										|
 | Pedestrians					| Bicycles crossing											|
 | Right-of-way at the next intersection	      		| Right-of-way at the next intersection					 				|
 | Road work			| Road work      							|
@@ -211,11 +211,11 @@ The input downloaded images and the top soft max probabilities are showing in be
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.00         			| Priority road    									| 
-| 0.40 (0.38 for correct image)    				| Speed limit (70km/h) 										|
-| 1.00 (No correct image)					| Pedestrians											|
+| 0.79 (0.13 for correct image)    				| Speed limit (70km/h) 										|
+| 0.82 (0.00 for correct image)					| Pedestrians											|
 | 1.00	      			| Right-of-way at the next intersection					 				|
-| 1.00				    | Road work      							|
-| 1.00				    | Turn right ahead      							|
+| 0.91				    | Road work      							|
+| 0.99				    | Turn right ahead      							|
 | 1.00				    | Keep left      							|
 
 Its related code is available in section `Output Top 5 Softmax Probabilities For Each Image Found on the Web`. 
