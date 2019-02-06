@@ -172,13 +172,13 @@ I chose well known CNN architecture vgg-16. The reason behind to choose this arc
 
 Here are seven German traffic signs that I found on the web:
 
-[![Priority road](g1.jpg)](g1.jpg)
-[![Speed limit (70km/h)](g2.jpg)](g2.jpg)
-[![Pedestrians](g3.jpg)](g3.jpg)
-[![Right-of-way at the next intersection](g4.jpg)](g4.jpg)
-[![Road work](g5.jpg)](g5.jpg)
-[![Turn right ahead](g6.jpg)](g6.jpg)
-[![Keep left](g7.jpg)](g7.jpg)
+[![Priority road](new_images/g1.jpg)](new_images/g1.jpg)
+[![Speed limit (70km/h)](new_images/g2.jpg)](new_images/g2.jpg)
+[![Pedestrians](new_images/g3.jpg)](new_images/g3.jpg)
+[![Right-of-way at the next intersection](new_images/g4.jpg)](new_images/g4.jpg)
+[![Road work](new_images/g5.jpg)](new_images/g5.jpg)
+[![Turn right ahead](new_images/g6.jpg)](new_images/g6.jpg)
+[![Keep left](new_images/g7.jpg)](new_images/g7.jpg)
 
 I applied the trained model over all images that found on web. Out of 7 images, 5 images predicted correct and 2 images predicted wrong but their probability differene betweeen right and wrong was less.
 
@@ -197,9 +197,11 @@ Here are the results of the prediction:
 | Keep left			| Keep left      							|
 
 
-The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+
+[![Prediction Performance](prediction_performance.jpg)](prediction_performance.jpg)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
