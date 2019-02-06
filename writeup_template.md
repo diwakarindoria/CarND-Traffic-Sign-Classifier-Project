@@ -168,29 +168,36 @@ I chose well known CNN architecture vgg-16. The reason behind to choose this arc
 
 ### Test a Model on New Images
 
-#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Download new traffic signs images from web
 
-Here are five German traffic signs that I found on the web:
+Here are seven German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+[![Priority road](g1.jpg)](g1.jpg)
+[![Speed limit (70km/h)](g2.jpg)](g2.jpg)
+[![Pedestrians](g3.jpg)](g3.jpg)
+[![Right-of-way at the next intersection](g4.jpg)](g4.jpg)
+[![Road work](g5.jpg)](g5.jpg)
+[![Turn right ahead](g6.jpg)](g6.jpg)
+[![Keep left](g7.jpg)](g7.jpg)
 
-The first image might be difficult to classify because ...
+I applied the trained model over all images that found on web. Out of 7 images, 5 images predicted correct and 2 images predicted wrong but their probability differene betweeen right and wrong was less.
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Model's predictions on these new traffic signs.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Priority road      		| Priority road   									| 
+| Speed limit (70km/h)     			| General caution										|
+| Pedestrians					| Bicycles crossing											|
+| Right-of-way at the next intersection	      		| Right-of-way at the next intersection					 				|
+| Road work			| Road work      							|
+| Turn right ahead			| Turn right ahead      							|
+| Keep left			| Keep left      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. This compares favorably to the accuracy on the test set of ...
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
