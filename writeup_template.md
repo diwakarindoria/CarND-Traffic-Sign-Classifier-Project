@@ -197,26 +197,30 @@ Here are the results of the prediction:
 | Keep left			| Keep left      							|
 
 
-The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. 
+The model was able to correctly guess 5 of the 7 traffic signs, which gives an accuracy of 71%. These two images are `Speed limit (70km/h)` and `Pedestrians`. As I am assuming that model is not enough trained for detecting these signs and need more examples to learn.
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
+Its code is available in section `Predict the Sign Type for Each Image`. 
 [![Prediction Performance](prediction_performance.jpg)](prediction_performance.jpg)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+#### 3. Top predictions
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The code for making predictions on my final model is located in the `Output Top 5 Softmax Probabilities For Each Image Found on the Web` section of the Ipython notebook.
+
+The input downloaded images and the top soft max probabilities are showing in below table.
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.00         			| Priority road    									| 
+| 0.40 (0.38 for correct image)    				| Speed limit (70km/h) 										|
+| 1.00 (No correct image)					| Pedestrians											|
+| 1.00	      			| Right-of-way at the next intersection					 				|
+| 1.00				    | Road work      							|
+| 1.00				    | Turn right ahead      							|
+| 1.00				    | Keep left      							|
 
+Its related code is available in section `Output Top 5 Softmax Probabilities For Each Image Found on the Web`. 
 
-For the second image ... 
+[![Prediction Performance](output_images_top/top_predictions.jpg)](output_images_top/top_predictions.jpg)
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
