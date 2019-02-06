@@ -83,6 +83,8 @@ Visualization of grayed images:
 Images normalization is the next step of preprocessing. Using this images will have zero mean and equal variance. Normalization helps optimizer in converging faster and better results.
 
 Its code is available in second cell of `Pre-process the Data Set (normalization, grayscale, etc.)` through lines 26 to 29.
+
+
 `# Normalization
 normalized_X_train = (gray_X_train-128)/128
 normalized_X_valid = (gray_X_valid-128)/128
@@ -99,6 +101,8 @@ Here is an example of an original image and an normalized image:
 Image shuffling is the last step of the preprocessing. Shuffle data is necessary to train model better.
 
 Its code is available in second cell of `Pre-process the Data Set (normalization, grayscale, etc.)` at line 47
+
+
 `# Shuffle
 shuffled_X_train, shuffled_y_train = shuffle(normalized_X_train, y_train)`
 
